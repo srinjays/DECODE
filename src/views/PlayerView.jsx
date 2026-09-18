@@ -44,12 +44,11 @@ const HOTSPOTS = [
 
 const SPAWNS = { 1: { x: 8, y: 9 }, 2: { x: 10, y: 9 }, 3: { x: 12, y: 9 } };
 
-// Character sprite positions in characters.png (each char is ~1/3 width)
-// Dumb=P3(Mute), Deaf=P1, Blind=P2
-const CHAR_SPRITES = {
-  1: { sx: 512 * 1, sy: 170, sw: 200, sh: 340, label: 'DEAF' },    // Middle third
-  2: { sx: 512 * 2 + 50, sy: 170, sw: 200, sh: 340, label: 'BLIND' },  // Right third
-  3: { sx: 60, sy: 170, sw: 200, sh: 340, label: 'DUMB' },         // Left third
+// Individual character images
+const CHAR_IMAGES = {
+  1: '/deaf.png',   // P1 = Deaf
+  2: '/blind.png',  // P2 = Blind
+  3: '/dumb.png',   // P3 = Dumb/Mute
 };
 
 function isWalkable(gx, gy) {
@@ -207,23 +206,16 @@ function ChatPanel({ messages, playerId, role, onSend }) {
 }
 
 // ============================================================
-// CHARACTER SPRITE using characters.png spritesheet
+// CHARACTER SPRITE — individual PNG images
 // ============================================================
 function CharSprite({ pid, isMe }) {
-  const sp = CHAR_SPRITES[pid];
-  if (!sp) return null;
+  const src = CHAR_IMAGES[pid];
+  if (!src) return null;
   const size = isMe ? 52 : 40;
   return (
-    <div className={`char-sprite ${isMe ? 'char-me' : 'char-other'}`}
-      style={{ width: size, height: size, overflow: 'hidden', position: 'relative' }}>
-      <img src="/characters.png" alt={sp.label}
-        style={{
-          position: 'absolute',
-          left: -(sp.sx) * (size / sp.sw),
-          top: -(sp.sy) * (size / sp.sh),
-          width: 1536 * (size / sp.sw),
-          height: 1024 * (size / sp.sh),
-        }} />
+    <div className={`char-sprite ${isMe ? 'char-me' : 'char-other'}`}>
+      <img src={src} alt={`Player ${pid}`}
+        style={{ width: size, height: size, imageRendering: 'pixelated' }} />
     </div>
   );
 }

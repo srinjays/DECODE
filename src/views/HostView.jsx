@@ -15,26 +15,19 @@ const HOTSPOTS = [
   { x: 19, y: 11, label: 'HINT 5', emoji: '😈' },
 ];
 
-const CHAR_SPRITES = {
-  1: { sx: 512, sy: 170, sw: 200, sh: 340, label: 'DEAF' },
-  2: { sx: 1074, sy: 170, sw: 200, sh: 340, label: 'BLIND' },
-  3: { sx: 60, sy: 170, sw: 200, sh: 340, label: 'DUMB' },
+const CHAR_IMAGES = {
+  1: '/deaf.png',
+  2: '/blind.png',
+  3: '/dumb.png',
 };
 
 function HostCharSprite({ pid }) {
-  const sp = CHAR_SPRITES[pid];
-  if (!sp) return null;
-  const size = 30;
+  const src = CHAR_IMAGES[pid];
+  if (!src) return null;
   return (
-    <div style={{ width: size, height: size, overflow: 'hidden', position: 'relative' }}>
-      <img src="/characters.png" alt={sp.label}
-        style={{
-          position: 'absolute',
-          left: -(sp.sx) * (size / sp.sw),
-          top: -(sp.sy) * (size / sp.sh),
-          width: 1536 * (size / sp.sw),
-          height: 1024 * (size / sp.sh),
-        }} />
+    <div style={{ width: 30, height: 30 }}>
+      <img src={src} alt={`P${pid}`}
+        style={{ width: 30, height: 30, imageRendering: 'pixelated' }} />
     </div>
   );
 }
