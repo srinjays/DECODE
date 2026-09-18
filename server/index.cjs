@@ -23,14 +23,14 @@ app.get('{*splat}', (req, res) => {
 });
 
 // ============================================================
-// HOTSPOT POSITIONS (must match officeMap.js)
+// HOTSPOT POSITIONS (must match PlayerView.jsx HOTSPOTS)
 // ============================================================
 const HOTSPOT_SEQ = [
-  { x: 17, y: 3, room: 'Server Room', emoji: '🔥', round: 1 },
-  { x: 4, y: 2, room: 'Office A', emoji: '📱', round: 2 },
-  { x: 10, y: 3, room: 'Meeting Room', emoji: '🤡', round: 3 },
-  { x: 10, y: 11, room: 'Break Room', emoji: '🙈', round: 4 },
-  { x: 17, y: 11, room: 'Filing Room', emoji: '😈', round: 5 },
+  { x: 13, y: 3, room: 'Bookshelf (HINT 1)', emoji: '🔥', round: 1 },
+  { x: 20, y: 5, room: 'Desk (HINT 2)', emoji: '📱', round: 2 },
+  { x: 2, y: 6, room: 'Filing Cabinet (HINT 3)', emoji: '🤡', round: 3 },
+  { x: 11, y: 7, room: 'Conference Table (HINT 4)', emoji: '🙈', round: 4 },
+  { x: 19, y: 11, room: 'Whiteboard (HINT 5)', emoji: '😈', round: 5 },
 ];
 
 // ============================================================
@@ -48,9 +48,9 @@ function freshState() {
     score: 0,
     aiMood: 'confident',
     players: {
-      1: { connected: false, sid: null, x: 9, y: 7, response: null, dir: 'down' },
-      2: { connected: false, sid: null, x: 10, y: 7, response: null, dir: 'down' },
-      3: { connected: false, sid: null, x: 11, y: 7, response: null, dir: 'down' },
+      1: { connected: false, sid: null, x: 8, y: 9, response: null, dir: 'down' },
+      2: { connected: false, sid: null, x: 10, y: 9, response: null, dir: 'down' },
+      3: { connected: false, sid: null, x: 12, y: 9, response: null, dir: 'down' },
     },
     hostSid: null,
     // Current round challenge data
