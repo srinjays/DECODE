@@ -211,7 +211,7 @@ function ChatPanel({ messages, playerId, role, onSend }) {
 function CharSprite({ pid, isMe }) {
   const src = CHAR_IMAGES[pid];
   if (!src) return null;
-  const size = isMe ? 80 : 64;
+  const size = isMe ? 140 : 110;
   return (
     <div className={`char-sprite ${isMe ? 'char-me' : 'char-other'}`}>
       <img src={src} alt={`Player ${pid}`}
