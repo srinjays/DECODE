@@ -82,9 +82,9 @@ function speak(txt) {
 // ============================================================
 // VIEWPORT — how much of the map is visible on screen
 // ============================================================
-const VP_W = 640; // viewport width px
-const VP_H = 480; // viewport height px
-const FOG_RADIUS = 140; // visibility circle radius px
+const VP_W = 960; // viewport width px
+const VP_H = 640; // viewport height px
+const FOG_RADIUS = 200; // visibility circle radius px
 
 // ============================================================
 // D-PAD
@@ -211,7 +211,7 @@ function ChatPanel({ messages, playerId, role, onSend }) {
 function CharSprite({ pid, isMe }) {
   const src = CHAR_IMAGES[pid];
   if (!src) return null;
-  const size = isMe ? 52 : 40;
+  const size = isMe ? 80 : 64;
   return (
     <div className={`char-sprite ${isMe ? 'char-me' : 'char-other'}`}>
       <img src={src} alt={`Player ${pid}`}
@@ -322,7 +322,7 @@ export default function PlayerView() {
       </div>
 
       {/* GAME VIEWPORT — the actual game world */}
-      <div className="game-viewport" style={{ width: VP_W, height: VP_H, maxWidth: '100vw', maxHeight: '55vh' }}>
+      <div className="game-viewport" style={{ width: VP_W, height: VP_H, maxWidth: '100vw', maxHeight: '70vh' }}>
         {/* Map image */}
         <div className="game-map-img" style={{
           width: IMG_W, height: IMG_H,
